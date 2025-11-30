@@ -7,20 +7,15 @@ import (
 	"runtime"
 	"syscall"
 
+	"github.com/CastilloXavier/ChatGo/api/tooling/web"
 	"github.com/CastilloXavier/ChatGo/foundation/logger"
 )
 
 func main() {
 	var log *logger.Logger
 
-	/*events := logger.Events{
-		Error: func(ctx context.Context, r logger.Record) {
-			log.Info(ctx, "******* SEND ALERT *******")
-		},
-	}*/
-
 	traceIDFn := func(ctx context.Context) string {
-		return "" //TODO: NEED TRACE IDs
+		return web.GetTrace(ctx).String()
 	}
 
 	log = logger.New(os.Stdout, logger.LevelInfo, "CAP", traceIDFn)

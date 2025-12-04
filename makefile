@@ -9,7 +9,7 @@ chat-run:
 	go run api/services/cap/main.go | go run api/tooling/logfmt/main.go
 
 chat-test:
-	curl -i -X GET http://localhost:3000/test
+	curl -i -X GET http://localhost:3000/connect
 
 # ==============================================================================
 # Modules support

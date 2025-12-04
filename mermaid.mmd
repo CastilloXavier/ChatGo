@@ -1,0 +1,25 @@
+graph TD
+    subgraph API
+        Main[main.go]
+        Config[Configuración]
+    end
+
+    subgraph App
+        Mux[Mux Router]
+        Mid[Middlewares]
+        Domain[Domain ChatApp]
+    end
+
+    subgraph Foundation [Capa Base Foundation]
+        Web[Web Framework]
+        Logger[Logger]
+        DB[Database Support]
+    end
+
+    Main --> |Usa| Mux
+    Main --> |Configura| Logger
+    Mux --> |Define Rutas| Domain
+    Mux --> |Usa| Mid
+    Domain --> |Usa| Web
+    Domain --> |Usa| Logger
+    Mid --> |Usa| Logger

@@ -1,0 +1,46 @@
+flowchart LR
+    %% External Clients
+    Client1(( ))
+    Client2(( ))
+    Client3(( ))
+    Client4(( ))
+    Client5(( ))
+    Client6(( ))
+
+    %% SE USA CAP
+    subgraph SE_USA_CAP [SE USA - CAP]
+        direction TB
+        Map_USA[Map Sock/Per]
+        Router_USA[Router]
+    end
+
+    %% AU CAP (top-right)
+    subgraph AU_CAP1 [AU - CAP]
+        direction TB
+        Map_AU1[Map Sock/Per]
+        Router_AU1[Router]
+    end
+
+    %% AU CAP (bottom)
+    subgraph AU_CAP2 [AU - CAP]
+        direction TB
+        Map_AU2[Map Sock/Per]
+        Router_AU2[Router]
+    end
+
+    %% NATS Broker
+    NATS[(NATS)]
+
+    %% Connections
+    Client1 -->|"Web Sockets"| SE_USA_CAP
+    Client2 --> SE_USA_CAP
+
+    SE_USA_CAP --> NATS
+    NATS --> AU_CAP1
+    NATS --> AU_CAP2
+
+    Client3 --> AU_CAP1
+    Client4 --> AU_CAP1
+
+    Client5 --> AU_CAP2
+    Client6 --> AU_CAP2

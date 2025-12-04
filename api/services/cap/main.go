@@ -22,6 +22,8 @@ var build = "develop"
 func main() {
 	var log *logger.Logger
 
+	// -------------------------------------------------------------------------
+	// TRACING
 	traceIDFn := func(ctx context.Context) string {
 		return web.GetTrace(ctx).String()
 	}

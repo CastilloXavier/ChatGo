@@ -15,9 +15,10 @@ func NewApp() *app {
 }
 
 func (a *app) test(_ context.Context, _ *http.Request) web.Encoder {
-	status := status{
+	//Web socket implemented here
+
+	return status{
 		Status: "ok",
 	}
 
-	return status
 }

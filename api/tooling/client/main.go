@@ -18,7 +18,7 @@ func main() {
 
 func hack1() error {
 	req := make(http.Header)
-	socket, _, err := websocket.DefaultDialer.Dial("http://localhost:3000/connect", req)
+	socket, _, err := websocket.DefaultDialer.Dial("ws://localhost:3000/connect", req)
 	if err != nil {
 		return fmt.Errorf("dial: %w", err)
 	}
@@ -65,5 +65,6 @@ func hack1() error {
 	if string(msg) != "WELCOME Xavier Castillo" {
 		return fmt.Errorf("expected WELCOME, got %s", string(msg))
 	}
+	fmt.Println(string(msg))
 	return nil
 }
